@@ -1,0 +1,13 @@
+include *.md
+include *.txt
+include *.rst
+
+# config
+include *.json
+
+# exclude node modules
+recursive-exclude node_modules *
+
+# Include the ui data files
+recursive-include ui/dist *
+
