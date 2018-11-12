@@ -4,16 +4,43 @@ from ething.core.plugin import Plugin
 
 # declare the plugin here
 class MyPlugin(Plugin):
-
-    def load(self):
+    
+    
+    JS_INDEX = './ui/dist/index.js'
+    
+    CONFIG_DEFAULTS = {
+        "foo": "world",
+        "bar": 42
+    }
+    
+    CONFIG_SCHEMA = {
+        "type": "object",
+        "properties": {
+            "bar": {
+                "type": "number"
+            }
+        }
+    }
+    
+    def setup(self):
         """
-        Load this plugin.
+        Setup this plugin.
         
         The core instance is available through self.core
         
         Do not forget to call super()
         """
-        super(MyPlugin, self).load()
+        super(MyPlugin, self).setup()
+    
+    def start(self):
+        """
+        Start this plugin.
+        
+        The core instance is available through self.core
+        
+        Do not forget to call super()
+        """
+        super(MyPlugin, self).start()
         
         # log some information
         self.log.info("hello !")
@@ -24,13 +51,13 @@ class MyPlugin(Plugin):
         # the core instance
         core = self.core
          
-    def unload(self):
+    def stop(self):
         """
         Unload this plugin.
         
         Do not forget to call super()
         """
-        super(MyPlugin, self).unload()
+        super(MyPlugin, self).stop()
         
     def on_config_change(self):
         """
